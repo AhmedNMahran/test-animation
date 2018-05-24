@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="green">#2fa881</color>
+    <color name="color_processing">#2b9fff</color>
+    <color name="color_pending">#ff9e0a</color>
+    <color name="color_delivered">#70c613</color>
+    <color name="color_rejected">#D32F2F</color>
+    <color name="color_reported">#e25757</color>
+    <color name="color_cancelled">#9f9f9f</color>
+    <color name="divider_color">#42000000</color>
+    <color name="camera_bg_color">#393939</color>
+    <color name="colorTitle">#de000000</color>
+    <color name="color_fees">#8a000000</color>
+    <color name="color_user_yellow">#ffd600</color>
+    <color name="swipebg">#33000000</color>
+    <color name="dialog">#de000000</color>
+    <color name="user_dialog_text_color">#dc000000</color>
+    <color name="connected_color">#d0127b00</color>
+    <color name="disconnected_color">#d3940700</color>
+    <color name="connectivity_color">#ffffff</color>
+    <color name="text_error_color">#3d3d3d</color>
+    <color name="text_empty_color">#3d3d3d</color>
+    <color name="color_dialog_timer">#d7000000</color>
+    <color name="decline_button">#eb263e</color>
+    <color name="busy">#ff5f4f</color>
+</resources>
