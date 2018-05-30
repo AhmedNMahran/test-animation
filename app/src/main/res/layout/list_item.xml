@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -44,6 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        app:cardCornerRadius="18dp"
         android:elevation="4dp">
 
         <FrameLayout
@@ -56,13 +58,20 @@
                 android:orientation="vertical">
 
 
-                <ImageView
-                    android:id="@+id/imgMeal"
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:background="@drawable/list_item_king"
-                    android:scaleType="fitXY"
-                    android:transitionName="imgTransition" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#000">
+
+                    <ImageView
+                        android:id="@+id/imgMeal"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:alpha="0.4"
+                        android:background="@drawable/burger"
+                        android:scaleType="fitXY"
+                        android:transitionName="imgTransition" />
+                </FrameLayout>
 
                 <RelativeLayout
 
@@ -136,31 +145,38 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="5dp"
-                    android:src="@android:drawable/btn_star_big_on" />
+                    android:id="@+id/imgLogo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:src="@mipmap/ic_burger" />
 
                 <TextView
                     android:id="@+id/tvRating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_below="@id/divider"
                     android:layout_margin="10dp"
                     android:text="4.9 (156+ this week)"
                     android:textColor="#ffffff"
                     android:textSize="14sp"
                     android:textStyle="bold" />
-            </LinearLayout>
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toLeftOf="@id/tvRating"
+                    android:src="@android:drawable/btn_star_big_on" />
+            </RelativeLayout>
         </FrameLayout>
 
     </android.support.v7.widget.CardView>
