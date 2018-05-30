@@ -12,6 +12,10 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.os.Build
 import android.support.v4.util.Pair
 import android.support.annotation.RequiresApi
+import com.appolica.flubber.Flubber
+import com.appolica.flubber.animation.providers.FadeOut
+import com.github.florent37.kotlin.pleaseanimate.please
+import kotlinx.android.synthetic.main.item.view.*
 import kotlinx.android.synthetic.main.list_item.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
@@ -33,6 +37,15 @@ class ItemsAdapter(val items: ArrayList<String>, val context: Context) : Recycle
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.container.onClick {
+
+            Flubber.with()
+                    .delay(200)
+                    .animation(Flubber.AnimationPreset.FADE_OUT) // Slide up animation
+                    .interpolator(Flubber.Curve.BZR_EASE_IN)
+                    .repeatCount(0)                              // Repeat once
+                    .duration(200)                              // Last for 1000 milliseconds(1 second)
+                    .createFor(holder.container)                             // Apply it to the view
+                    .start()
             val pair1 = Pair.create(holder.imgMeal as View, holder.imgMeal.transitionName) as Pair<View, String>
             val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(holder.container.context as Activity, pair1, pair1)
             val intent = Intent(holder.container.context, DetailsActivity::class.java)
@@ -44,5 +57,8 @@ class ItemsAdapter(val items: ArrayList<String>, val context: Context) : Recycle
 class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     // Holds the TextView that will add each animal to
     val imgMeal = view.imgMeal
+    val imgLogo = view.imgLogo
+    val rating = view.tvRating
     val container = view
 }
+

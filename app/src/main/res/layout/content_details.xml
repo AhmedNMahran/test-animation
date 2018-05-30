@@ -6,68 +6,210 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
+    android:background="@android:color/white"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".DetailsActivity"
-    android:background="@color/color_cancelled"
     tools:showIn="@layout/activity_details">
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/black"
+
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imgMeal"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:alpha=".3"
-            android:background="@drawable/list_item_king"
-            android:scaleType="fitXY"
-            android:transitionName="imgTransition" />
+            android:layout_height="wrap_content"
+            android:background="@android:color/black"
+            android:orientation="vertical">
 
+            <ImageView
+                android:id="@+id/imgMeal"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:alpha=".3"
+                android:background="@drawable/burger"
+                android:scaleType="fitXY"
+                android:transitionName="imgTransition" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/layoutOffer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="35dp"
+            android:background="@drawable/bg_search">
+
+            <ImageView
+                android:id="@+id/imgCredit"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_margin="10dp"
+                android:src="@mipmap/credit_card" />
+
+            <TextView
+                android:id="@+id/tvOffer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/imgCredit"
+                android:text="Pay with credit card and get 10% discount"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvClickHere"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvOffer"
+                android:layout_toRightOf="@id/imgCredit"
+                android:alpha="0.7"
+                android:text="Click to check more details" />
+        </RelativeLayout>
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <include layout="@layout/featured_item" />
+
+                <include layout="@layout/featured_item" />
+
+                <include layout="@layout/featured_item" />
+
+                <include layout="@layout/featured_item" />
+            </LinearLayout>
+        </HorizontalScrollView>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/tagsView"
         android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="150dp"
         android:background="@drawable/button_white"
-        android:elevation="4dp"
+        android:elevation="10dp"
         android:gravity="center"
         android:orientation="horizontal"
+        android:paddingBottom="6dp"
         android:visibility="visible">
 
-        <TextView
-            android:id="@+id/tv1"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_margin="5dp"
-            android:gravity="center"
-            android:text="Test1"
-            android:textColor="@color/color_cancelled" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv2"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_margin="5dp"
-            android:gravity="center"
-            android:text="Test2"
-            android:textColor="@color/color_cancelled" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="45-60"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tv3"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_margin="5dp"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:gravity="center"
+                android:text="minutes"
+                android:textColor="@color/color_cancelled"
+                android:textStyle="normal" />
 
-            android:gravity="center"
-            android:text="Test3"
-            android:textColor="@color/color_cancelled" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="Free"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:gravity="center"
+                android:text="delivery"
+                android:textColor="@color/color_cancelled"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="SR 35"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:gravity="center"
+                android:text="minimum"
+                android:textColor="@color/color_cancelled"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@mipmap/cash" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@mipmap/credit_card" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+
+                android:gravity="center"
+                android:text="payment"
+                android:textColor="@color/color_cancelled"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <RelativeLayout
@@ -107,6 +249,25 @@
             android:textColor="@android:color/white"
             android:textSize="12sp"
             android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/tvRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:text="4.9 (156+ this week)"
+            android:textColor="#ffffff"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@id/tvRating"
+            android:src="@android:drawable/btn_star_big_on" />
     </RelativeLayout>
 </FrameLayout>
 

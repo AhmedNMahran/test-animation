@@ -41,10 +41,7 @@ class DetailsActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= 21) {
             window.sharedElementEnterTransition = TransitionInflater.from(this).inflateTransition(R.transition.shared_element)
         }
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // previously invisible view

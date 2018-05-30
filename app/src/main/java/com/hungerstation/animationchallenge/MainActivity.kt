@@ -10,27 +10,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     // Initializing an empty ArrayList to be filled with animals
-    val animals: ArrayList<String> = ArrayList()
+    val items: ArrayList<String> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        if(Build.VERSION.SDK_INT>=21)
-        {
-            window.sharedElementExitTransition = TransitionInflater.from(this).inflateTransition(R.transition.shared_element)
-        }
-
-        // Loads items into the ArrayList
-        addItems()
-
-        // Creates a vertical Layout Manager
-        rv_animal_list.layoutManager = LinearLayoutManager(this)
-
-        // You can use GridLayoutManager if you want multiple columns. Enter the number of columns as a parameter.
-//        rv_animal_list.layoutManager = GridLayoutManager(this, 2)
-
-        // Access the RecyclerView Adapter and load the data into it
-        rv_animal_list.adapter = ItemsAdapter(animals, this)
 
 
     }
@@ -38,8 +22,27 @@ class MainActivity : AppCompatActivity() {
     // Adds animals to the empty animals ArrayList
 
     fun addItems() {
-        for (i in 0..15){
-            animals.add("Burger $i delicious :D ")
+        for (i in 0..15) {
+            items.add("Burger $i delicious :D ")
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (Build.VERSION.SDK_INT >= 21) {
+            window.sharedElementExitTransition = TransitionInflater.from(this).inflateTransition(R.transition.shared_element)
+        }
+
+        // Loads items into the ArrayList
+        addItems()
+
+        // Creates a vertical Layout Manager
+        rv_meals_list.layoutManager = LinearLayoutManager(this)
+
+        // You can use GridLayoutManager if you want multiple columns. Enter the number of columns as a parameter.
+//        rv_animal_list.layoutManager = GridLayoutManager(this, 2)
+
+        // Access the RecyclerView Adapter and load the data into it
+        rv_meals_list.adapter = ItemsAdapter(items, this)
     }
 }
