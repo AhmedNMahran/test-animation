@@ -64,6 +64,7 @@ class DetailsActivity : AppCompatActivity() {
 
         burger.animate().setDuration(820).translationY(-250f).alpha(1f).start()
         itemsToFade.animate().setDuration(700).setStartDelay(300).translationY(-250f).alpha(1f).start()
+        close.animate().scaleXBy(30f).alpha(1f).scaleY(30f).setStartDelay(150).setDuration(120).start()
         burger.visibility = VISIBLE
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.LOLLIPOP) {
             // get the center for the clipping circle
