@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.list_item.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 
-class ItemsAdapter(val items: ArrayList<String>, val context: Context) : RecyclerView.Adapter<ViewHolder>() {
+class ItemsAdapter(val items: ArrayList<String>, val context: Context, val onItemClick: () -> Unit) : RecyclerView.Adapter<ViewHolder>() {
 
 
     // Gets the number of animals in the list
@@ -37,7 +37,7 @@ class ItemsAdapter(val items: ArrayList<String>, val context: Context) : Recycle
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.container.onClick {
-
+            onItemClick
             Flubber.with()
                     .delay(200)
                     .animation(Flubber.AnimationPreset.FADE_OUT) // Slide up animation
@@ -52,6 +52,7 @@ class ItemsAdapter(val items: ArrayList<String>, val context: Context) : Recycle
             (holder.imgMeal.context as Activity).startActivity(intent, optionsCompat.toBundle())
         }
     }
+
 }
 
 class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -59,6 +60,6 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val imgMeal = view.imgMeal
     val imgLogo = view.imgLogo
     val rating = view.tvRating
-    val container = view
+    val container = view.item_root
 }
 

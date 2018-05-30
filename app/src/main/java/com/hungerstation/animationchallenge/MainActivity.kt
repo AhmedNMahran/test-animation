@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.transition.TransitionInflater
+import com.appolica.flubber.Flubber
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -43,6 +44,8 @@ class MainActivity : AppCompatActivity() {
 //        rv_animal_list.layoutManager = GridLayoutManager(this, 2)
 
         // Access the RecyclerView Adapter and load the data into it
-        rv_meals_list.adapter = ItemsAdapter(items, this)
+        rv_meals_list.adapter = ItemsAdapter(items, this, {
+            Flubber.with().animation(Flubber.AnimationPreset.FADE_OUT).delay(200).duration(200).createFor(root).start()
+        })
     }
 }
