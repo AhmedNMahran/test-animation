@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.transition.TransitionInflater
+import android.view.View
 import com.appolica.flubber.Flubber
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -30,6 +31,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        root.visibility = View.VISIBLE
+        topViews.visibility = View.VISIBLE
         if (Build.VERSION.SDK_INT >= 21) {
             window.sharedElementExitTransition = TransitionInflater.from(this).inflateTransition(R.transition.shared_element)
         }
@@ -44,8 +47,12 @@ class MainActivity : AppCompatActivity() {
 //        rv_animal_list.layoutManager = GridLayoutManager(this, 2)
 
         // Access the RecyclerView Adapter and load the data into it
-        rv_meals_list.adapter = ItemsAdapter(items, this, {
-            Flubber.with().animation(Flubber.AnimationPreset.FADE_OUT).delay(200).duration(200).createFor(root).start()
+        rv_meals_list.adapter = ItemsAdapter(items, this)
+        (rv_meals_list.adapter as ItemsAdapter).setListener(View.OnClickListener {
+            root.animate().alpha(0F).setDuration(200).setStartDelay(200).start()
+            topViews.animate().setDuration(1000).setStartDelay(200).translationY(-400F).start()
         })
+
+
     }
 }

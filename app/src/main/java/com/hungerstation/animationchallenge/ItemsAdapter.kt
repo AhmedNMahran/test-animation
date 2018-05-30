@@ -15,13 +15,14 @@ import android.support.annotation.RequiresApi
 import com.appolica.flubber.Flubber
 import com.appolica.flubber.animation.providers.FadeOut
 import com.github.florent37.kotlin.pleaseanimate.please
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item.view.*
 import kotlinx.android.synthetic.main.list_item.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
+lateinit var callback: View.OnClickListener
 
-class ItemsAdapter(val items: ArrayList<String>, val context: Context, val onItemClick: () -> Unit) : RecyclerView.Adapter<ViewHolder>() {
-
+class ItemsAdapter(val items: ArrayList<String>, val context: Context) : RecyclerView.Adapter<ViewHolder>() {
 
     // Gets the number of animals in the list
     override fun getItemCount(): Int {
@@ -37,15 +38,11 @@ class ItemsAdapter(val items: ArrayList<String>, val context: Context, val onIte
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.container.onClick {
-            onItemClick
-            Flubber.with()
-                    .delay(200)
-                    .animation(Flubber.AnimationPreset.FADE_OUT) // Slide up animation
-                    .interpolator(Flubber.Curve.BZR_EASE_IN)
-                    .repeatCount(0)                              // Repeat once
-                    .duration(200)                              // Last for 1000 milliseconds(1 second)
-                    .createFor(holder.container)                             // Apply it to the view
-                    .start()
+
+            callback?.onClick(null)
+            holder.container.animate().alpha(0f).setStartDelay(200).setDuration(200).start()
+
+
             val pair1 = Pair.create(holder.imgMeal as View, holder.imgMeal.transitionName) as Pair<View, String>
             val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(holder.container.context as Activity, pair1, pair1)
             val intent = Intent(holder.container.context, DetailsActivity::class.java)
@@ -53,6 +50,9 @@ class ItemsAdapter(val items: ArrayList<String>, val context: Context, val onIte
         }
     }
 
+    fun setListener(listener: View.OnClickListener) {
+        callback = listener
+    }
 }
 
 class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

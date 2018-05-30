@@ -30,6 +30,11 @@ import com.hungerstation.animationchallenge.R.id.tagsView
 import android.opengl.ETC1.getHeight
 import android.opengl.ETC1.getWidth
 import android.view.View.INVISIBLE
+import android.animation.AnimatorInflater
+import android.animation.AnimatorSet
+import com.hungerstation.animationchallenge.R.id.itemsToFade
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 
 
 class DetailsActivity : AppCompatActivity() {
@@ -52,17 +57,13 @@ class DetailsActivity : AppCompatActivity() {
         }, 1000)
 
 
-
     }
 
     private fun showView(myView: LinearLayout) {
-        burger.visibility = INVISIBLE
-        Flubber.with()
 
-                .animation(Flubber.AnimationPreset.FADE_IN_UP) // Slide up animation
-                .duration(1000)                              // Last for 1000 milliseconds(1 second)
-                .createFor(burger)                             // Apply it to the view
-                .start()                                   // Start it now
+
+        burger.animate().setDuration(820).translationY(-250f).alpha(1f).start()
+        itemsToFade.animate().setDuration(700).setStartDelay(300).translationY(-250f).alpha(1f).start()
         burger.visibility = VISIBLE
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.LOLLIPOP) {
             // get the center for the clipping circle
@@ -83,7 +84,6 @@ class DetailsActivity : AppCompatActivity() {
             myView.visibility = VISIBLE
         }
     }
-
 
 
 }
