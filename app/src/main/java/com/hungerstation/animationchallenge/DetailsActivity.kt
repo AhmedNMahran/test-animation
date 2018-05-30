@@ -7,40 +7,87 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.transition.TransitionInflater
 import android.view.View
+import android.widget.FrameLayout
+import android.widget.LinearLayout
 import com.appolica.flubber.Flubber
 import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.content_details.*
+import org.jetbrains.anko.dip
+import android.view.animation.AnimationUtils
+import android.view.animation.Animation
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.support.v4.view.ViewCompat.animate
+import android.view.ViewAnimationUtils
+import android.R.attr.button
+import android.opengl.ETC1.getHeight
+import android.opengl.ETC1.getWidth
+import android.support.annotation.RequiresApi
+import android.support.v4.view.ViewCompat.setElevation
+import android.view.View.VISIBLE
+import com.github.florent37.kotlin.pleaseanimate.please
+import com.hungerstation.animationchallenge.R.id.tagsView
+import android.opengl.ETC1.getHeight
+import android.opengl.ETC1.getWidth
+import android.view.View.INVISIBLE
+
 
 class DetailsActivity : AppCompatActivity() {
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
         if (Build.VERSION.SDK_INT >= 21) {
             window.sharedElementEnterTransition = TransitionInflater.from(this).inflateTransition(R.transition.shared_element)
         }
-        setSupportActionBar(toolbar)
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val tags = arrayOf(tagsView, tv1, tv2, tv3)
+        // previously invisible view
+        val myView = tagsView
 
-        for (i in tags){
-            Thread.sleep(200)
-            Flubber.with()
-                    .autoStart(true)
-                    .animation(Flubber.AnimationPreset.MORPH) // Slide up animation
-                    .repeatCount(0)                              // Repeat once
-                    .duration(500)                              // Last for 1000 milliseconds(1 second)
-                    .createFor(i)
-                    // Apply it to the view
-                    .start()
-        }
+        myView.postDelayed({
+            showView(myView)
+        }, 1000)
 
 
 
     }
+
+    private fun showView(myView: LinearLayout) {
+        burger.visibility = INVISIBLE
+        Flubber.with()
+
+                .animation(Flubber.AnimationPreset.FADE_IN_UP) // Slide up animation
+                .duration(1000)                              // Last for 1000 milliseconds(1 second)
+                .createFor(burger)                             // Apply it to the view
+                .start()                                   // Start it now
+        burger.visibility = VISIBLE
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.LOLLIPOP) {
+            // get the center for the clipping circle
+            val cx = myView.measuredWidth / 2
+            val cy = myView.measuredHeight / 2
+
+            // get the final radius for the clipping circle
+            val finalRadius = Math.hypot(cx.toDouble(), cy.toDouble()).toFloat()
+
+            // create the animator for this view (the start radius is zero)
+            val anim = ViewAnimationUtils.createCircularReveal(myView, cx, cy, 15f, finalRadius)
+            anim.duration = 10000
+            // make the view visible and start the animation
+            myView.visibility = VISIBLE
+            anim.start()
+        } else {
+            // set the view to visible without a circular reveal animation below Lollipop
+            myView.visibility = VISIBLE
+        }
+    }
+
+
+
 }
+

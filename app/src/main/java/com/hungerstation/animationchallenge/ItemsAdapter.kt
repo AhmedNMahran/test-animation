@@ -32,11 +32,9 @@ class ItemsAdapter(val items: ArrayList<String>, val context: Context) : Recycle
     // Binds each animal in the ArrayList to a view
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tvName?.text = items.get(position)
         holder.container.onClick {
             val pair1 = Pair.create(holder.imgMeal as View, holder.imgMeal.transitionName) as Pair<View, String>
-            val pair2 = Pair.create(holder.imgMeal, holder.tvName.transitionName) as Pair<View, String>
-            val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(holder.container.context as Activity, pair1, pair2)
+            val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(holder.container.context as Activity, pair1, pair1)
             val intent = Intent(holder.container.context, DetailsActivity::class.java)
             (holder.imgMeal.context as Activity).startActivity(intent, optionsCompat.toBundle())
         }
@@ -45,7 +43,6 @@ class ItemsAdapter(val items: ArrayList<String>, val context: Context) : Recycle
 
 class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     // Holds the TextView that will add each animal to
-    val tvName = view.tv_animal_type
     val imgMeal = view.imgMeal
     val container = view
 }
