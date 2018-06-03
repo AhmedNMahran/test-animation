@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:minHeight="?android:attr/actionBarSize">
+
+    <ImageView
+        android:id="@+id/imgPin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/ic_pin" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/imgPin"
+        android:layout_toRightOf="@id/imgPin"
+        android:letterSpacing="-0.1"
+        android:text="Al Sabeel"
+        android:textColor="#434340"
+        android:textSize="24sp"
+
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvTitle"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:letterSpacing="0"
+        android:text="Jeddah 22325, SB"
+        android:textColor="#9f9f9f"
+        android:textSize="12sp"
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/tvChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvTitle"
+        android:layout_marginEnd="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:layout_toEndOf="@id/tvSubtitle"
+        android:layout_toRightOf="@id/tvSubtitle"
+        android:letterSpacing="-0.1"
+        android:text="Change"
+        android:textColor="#434340"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <include
+        android:id="@+id/btnMoreLayout"
+        layout="@layout/btn_more"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_below="@id/tvTitle"
+        android:layout_toEndOf="@id/tvChange"
+        android:layout_toRightOf="@id/tvChange" />
+
+    <RelativeLayout
+        android:id="@+id/btnBagNew"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_bag_new" />
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/red_circle" />
+    </RelativeLayout>
+</RelativeLayout>
