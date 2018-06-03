@@ -8,6 +8,8 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <include layout="@layout/custom_action_bar" />
+
     <LinearLayout
         android:id="@+id/topViews"
         android:layout_width="match_parent"
