@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <transitionSet
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:duration="500">
+    android:duration="400">
+    <arcMotion  android:duration="600" android:minimumHorizontalAngle="45" android:minimumVerticalAngle="30"/>
     <changeBounds/>
-    <fade/>
+    <fade android:duration="300"/>
 </transitionSet>

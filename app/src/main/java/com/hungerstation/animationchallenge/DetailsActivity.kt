@@ -12,6 +12,7 @@ import android.support.annotation.RequiresApi
 import android.view.View.VISIBLE
 import com.github.florent37.kotlin.pleaseanimate.please
 import org.jetbrains.anko.dip
+import org.jetbrains.anko.startActivity
 
 
 class DetailsActivity : AppCompatActivity() {
@@ -31,7 +32,7 @@ class DetailsActivity : AppCompatActivity() {
 
         myView.postDelayed({
             showView(myView)
-        }, 1000)
+        }, 200)
 
 
     }
@@ -40,8 +41,9 @@ class DetailsActivity : AppCompatActivity() {
 
 
         burger.animate().setDuration(820).translationY(-250f).alpha(1f).start()
+        black.animate().setDuration(100).alpha(1f).setStartDelay(250).start()
         itemsToFade.animate().setDuration(700).setStartDelay(300).translationY(-250f).alpha(1f).start()
-        close.animate().scaleXBy(30f).alpha(1f).scaleYBy(30f).setStartDelay(150).setDuration(120).start()
+        close.animate().scaleXBy(30f).alpha(1f).scaleYBy(30f).setStartDelay(350).setDuration(180).start()
         var params = tagsView.layoutParams
         tagsView.postDelayed({
             object : CountDownTimer(350, 1) {
@@ -83,6 +85,9 @@ class DetailsActivity : AppCompatActivity() {
         }
     }
 
-
+    override fun onBackPressed() {
+        startActivity<MainActivity>()
+        finish()
+    }
 }
 

@@ -18,21 +18,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-    }
-
-    // Adds animals to the empty animals ArrayList
-
-    fun addItems() {
-        for (i in 0..15) {
-            items.add("Burger $i delicious :D ")
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        root.visibility = View.VISIBLE
-        topViews.visibility = View.VISIBLE
         if (Build.VERSION.SDK_INT >= 21) {
             window.sharedElementExitTransition = TransitionInflater.from(this).inflateTransition(R.transition.shared_element)
         }
@@ -50,8 +35,23 @@ class MainActivity : AppCompatActivity() {
         rv_meals_list.adapter = ItemsAdapter(items, this)
         (rv_meals_list.adapter as ItemsAdapter).setListener(View.OnClickListener {
             root.animate().alpha(0F).setDuration(200).setStartDelay(200).start()
-            topViews.animate().setDuration(1000).setStartDelay(200).translationY(-400F).start()
+            topViews.animate().setDuration(2000).setStartDelay(200).translationY(-40000F).start()
         })
+    }
+
+    // Adds animals to the empty animals ArrayList
+
+    fun addItems() {
+        for (i in 0..15) {
+            items.add("Burger $i delicious :D ")
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        root.visibility = View.VISIBLE
+        topViews.visibility = View.VISIBLE
+
 
 
     }

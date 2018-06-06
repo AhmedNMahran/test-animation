@@ -61,5 +61,7 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val imgLogo = view.imgLogo
     val rating = view.tvRating
     val container = view.item_root
+
 }
+
 
